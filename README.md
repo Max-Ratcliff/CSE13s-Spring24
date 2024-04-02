@@ -1,4 +1,4 @@
-# CSE13S-02 Winter 2024
+# CSE13S-01 Spring 2024
 
 ## Assignment Directories
 
