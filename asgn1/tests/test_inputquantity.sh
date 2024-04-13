@@ -15,9 +15,9 @@ if [ $? -eq 0 ]; then
     exit 1
 fi
 
-# Ensures differences *are* found
+# Ensures differences *arent* found
 diff out.txt ex_out.txt
-if [ $? -eq 0 ]; then
+if [ $? -ne 0 ]; then
     echo "wrong output"
     rm out.txt
     rm ex_out.txt
@@ -39,9 +39,9 @@ if [ $? -eq 0 ]; then
     exit 1
 fi
 
-# Ensures differences *are* found
+# Ensures differences *arent* found
 diff out.txt ex_out.txt
-if [ $? -eq 0 ]; then
+if [ $? -ne 0 ]; then
     echo "wrong output"
     rm out.txt
     rm ex_out.txt
@@ -51,5 +51,6 @@ fi
 # Cleans up files created
 rm out.txt
 rm ex_out.txt
-echo 0
+echo all tests passed
+exit 0
 

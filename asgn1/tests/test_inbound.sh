@@ -57,7 +57,7 @@ rm ex_out.txt
 
 #test 3: 512 512
 # Creates the example output
-echo 1025 > ex_out.txt
+echo 1024 > ex_out.txt
 # Runs the program
 ./calc 512 512 > out.txt 
 
@@ -165,5 +165,5 @@ fi
 rm out.txt
 rm ex_out.txt
 
-
+echo all tests passed
 exit 0
