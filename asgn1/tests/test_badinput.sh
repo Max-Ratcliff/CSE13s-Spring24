@@ -1,5 +1,5 @@
 #start tests for non-integer inputs
-#test inputs (A 1, 1 A, BB BB, 5.5 3, 3 5.5, 5.5 5.5)
+#test inputs (A 1, 1 A, BB BB, 5.5 3, 3 5.5, 5.5 5.5, - 4, 4 -, - -, 1+1 1, 1 1+1, 1+1 1+1)
 # Creates the example output
 echo BAD INPUT > ex_out.txt
 
@@ -192,9 +192,73 @@ if [ $? -ne 0 ]; then
 fi
 
 
-#test 8: - -
+#test 9: - -
 # Runs the program
 ./calc - - > out.txt 
+
+# Ensures exit code is not Zero
+if [ $? -eq 0 ]; then
+    echo "invalid exit code" $?
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+# Ensures differences *are* found
+diff out.txt ex_out.txt
+if [ $? -ne 0 ]; then
+    echo "wrong output"
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+#test 10: 1+1 1
+# Runs the program
+./calc 1+1 1 > out.txt 
+
+# Ensures exit code is not Zero
+if [ $? -eq 0 ]; then
+    echo "invalid exit code" $?
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+# Ensures differences *are* found
+diff out.txt ex_out.txt
+if [ $? -ne 0 ]; then
+    echo "wrong output"
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+#test 11: 1 1+1
+# Runs the program
+./calc 1 1+1 > out.txt 
+
+# Ensures exit code is not Zero
+if [ $? -eq 0 ]; then
+    echo "invalid exit code" $?
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+# Ensures differences *are* found
+diff out.txt ex_out.txt
+if [ $? -ne 0 ]; then
+    echo "wrong output"
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+
+#test 12: 1+1 1+1
+# Runs the program
+./calc 1+1 1+1 > out.txt 
 
 # Ensures exit code is not Zero
 if [ $? -eq 0 ]; then
