@@ -149,6 +149,72 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+#test 7: - 4
+# Runs the program
+./calc - 4 > out.txt 
+
+# Ensures exit code is not Zero
+if [ $? -eq 0 ]; then
+    echo "invalid exit code" $?
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+# Ensures differences *are* found
+diff out.txt ex_out.txt
+if [ $? -ne 0 ]; then
+    echo "wrong output"
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+#test 8: 4 -
+# Runs the program
+./calc 4 - > out.txt 
+
+# Ensures exit code is not Zero
+if [ $? -eq 0 ]; then
+    echo "invalid exit code" $?
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+# Ensures differences *are* found
+diff out.txt ex_out.txt
+if [ $? -ne 0 ]; then
+    echo "wrong output"
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+
+#test 8: - -
+# Runs the program
+./calc - - > out.txt 
+
+# Ensures exit code is not Zero
+if [ $? -eq 0 ]; then
+    echo "invalid exit code" $?
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+# Ensures differences *are* found
+diff out.txt ex_out.txt
+if [ $? -ne 0 ]; then
+    echo "wrong output"
+    rm out.txt
+    rm ex_out.txt
+    exit 1
+fi
+
+
+
 # Cleans up files created
 rm out.txt
 rm ex_out.txt
