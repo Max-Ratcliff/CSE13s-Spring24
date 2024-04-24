@@ -1,0 +1,218 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdftex 2024.4.17)  24 APR 2024 04:28
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**main.tex
+(./main.tex
+! Undefined control sequence.
+l.9 \newcommand
+               {\NAME}{Max Ratcliff}
+? 
+! Undefined control sequence.
+l.9 \newcommand{\NAME
+                     }{Max Ratcliff}
+? 
+! Undefined control sequence.
+l.10 \newcommand
+                {\ASSIGNMENT}{Assignment 2 -- LRC Report Template}
+? 
+! Undefined control sequence.
+l.10 \newcommand{\ASSIGNMENT
+                            }{Assignment 2 -- LRC Report Template}
+? 
+! Undefined control sequence.
+l.11 \newcommand
+                {\CLASS}{CSE 13S -- Spring 24}
+? 
+! Undefined control sequence.
+l.11 \newcommand{\CLASS
+                       }{CSE 13S -- Spring 24}
+? 
+! Undefined control sequence.
+l.18 \documentclass
+                   {article}
+? 
+! Undefined control sequence.
+l.19 \usepackage
+                {graphicx} % Required for inserting images
+? 
+! Undefined control sequence.
+l.20 \usepackage
+                {hyperref}
+? 
+! Undefined control sequence.
+l.21 \usepackage
+                {lastpage}
+? 
+! Undefined control sequence.
+l.22 \usepackage
+                {fancyhdr}
+? 
+! Undefined control sequence.
+l.23 \usepackage
+                {geometry}
+? 
+! Undefined control sequence.
+l.24 \geometry
+              {margin=1in}
+? 
+! Undefined control sequence.
+l.25 \usepackage
+                {underscore}
+? 
+! Undefined control sequence.
+l.26 \usepackage
+                {subcaption}
+? 
+! Undefined control sequence.
+l.27 \usepackage
+                {fancyvrb}
+? 
+! Undefined control sequence.
+l.28 \usepackage
+                {listings}
+? 
+! Undefined control sequence.
+l.29 \lstset
+            {
+? 
+! Undefined control sequence.
+l.30 basicstyle=\small
+                      \ttfamily,
+? 
+! Undefined control sequence.
+l.30 basicstyle=\small\ttfamily
+                               ,
+? 
+! Undefined control sequence.
+l.36 \title
+           {\ASSIGNMENT}
+? 
+! Undefined control sequence.
+l.36 \title{\ASSIGNMENT
+                       }
+? 
+! Undefined control sequence.
+l.37 \author
+            {\NAME}
+? 
+! Undefined control sequence.
+l.37 \author{\NAME
+                  }
+? 
+! Undefined control sequence.
+l.38 \date
+          {\CLASS}
+? 
+! Undefined control sequence.
+l.38 \date{\CLASS
+                 }
+? 
+! Undefined control sequence.
+l.40 \begin
+           {document}
+? 
+! Undefined control sequence.
+l.41 \pagestyle
+               {fancy}
+? 
+! Undefined control sequence.
+l.42 \fancyfoot
+               {}
+? 
+! Undefined control sequence.
+l.43 \fancyhead
+               {}
+? 
+! Undefined control sequence.
+l.44 \fancyfoot
+               [L]{\ASSIGNMENT\ -- \CLASS\ -- \NAME}
+? 
+! Undefined control sequence.
+l.44 \fancyfoot[L]{\ASSIGNMENT
+                              \ -- \CLASS\ -- \NAME}
+? 
+! Undefined control sequence.
+l.44 \fancyfoot[L]{\ASSIGNMENT\ -- \CLASS
+                                         \ -- \NAME}
+? 
+! Undefined control sequence.
+l.44 ...cyfoot[L]{\ASSIGNMENT\ -- \CLASS\ -- \NAME
+                                                  }
+? 
+! Undefined control sequence.
+l.45 \fancyfoot
+               [R]{\thepage}
+? 
+! Undefined control sequence.
+l.45 \fancyfoot[R]{\thepage
+                           }
+? 
+! Undefined control sequence.
+l.47 \maketitle
+               
+? 
+! Undefined control sequence.
+l.53 \section
+             *{Purpose}
+? 
+! Undefined control sequence.
+l.56 \section
+             {Questions}
+? 
+! Undefined control sequence.
+l.60 \subsection
+                {Randomness}
+? 
+! Undefined control sequence.
+l.66 \subsection
+                {What is an abstraction}
+? 
+! Undefined control sequence.
+l.72 \subsection
+                {Why?}
+? 
+! Undefined control sequence.
+l.79 \subsection
+                {Functions}
+? 
+! Undefined control sequence.
+l.87 \subsection
+                {Testing}
+? 
+! Undefined control sequence.
+l.94 \subsection
+                {Putting it all together}
+? 
+! Undefined control sequence.
+l.99 \section
+             {How to Use the Program}
+? 
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ¦ in font cmr10!
+! Undefined control sequence.
+l.103 \section
+              {Program Design}
+? 
+! Undefined control sequence.
+l.105 \subsection
+                 {Overall Pseudocode}
+? 
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+! Undefined control sequence.
+l.117 \subsection
+                 {Descriptions of Functions}
+? 
+! Undefined control sequence.
+l.121 \begin
+            {itemize}
+? 
+[2] )</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on main.pdf (2 pages, 27991 bytes).
+PDF statistics:
+ 15 PDF objects out of 1000 (max. 8388607)
+ 9 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
