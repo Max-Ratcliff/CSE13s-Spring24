@@ -22,14 +22,17 @@ Position roll_dice(void) {
 
 int no_winner(int chips[], int num_players) {
     int has_chip = 0;
+    int last_player_with_chip;
     for (int i = 0; i < num_players; i++) {
         if (chips[i] > 0 && has_chip) {
             return 1;
         }
         if (chips[i] > 0) {
             has_chip = 1;
+	    last_player_with_chip = i;
         }
     }
+    printf("%s won!\n", player_name[last_player_with_chip]);
     return 0;
 }
 
