@@ -56,38 +56,24 @@ void sim_game(int num_players) {
                 }
                 for (int j = 0; j < num_rolls; j++) {
                     roll = roll_dice();
-                    //                   printf("   TESTING: %s: starts with: %d rolls: %d\n", player_name[i], chips[i], roll);
                     if (roll == LEFT) {
                         chips[i]--;
-                        //                        printf("   TESTING: %s: LEFT! now %d chips\n", player_name[i], chips[i]);
                         if (i == num_players - 1) {
                             chips[0]++;
-                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[0], chips[0]);
                         } else {
                             chips[i + 1]++;
-                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[i+1], chips[i+1]);
                         }
                     } else if (roll == CENTER) {
                         chips[i]--;
-                        //                              printf("   TESTING: %s: CENTER! now %d chips\n", player_name[i], chips[i]);
                     } else if (roll == RIGHT) {
                         chips[i]--;
-                        //                            printf("   TESTING: %s: RIGHT! now %d chips\n", player_name[i], chips[i]);
                         if (i == 0) {
                             chips[num_players - 1]++;
-                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[num_players - 1], chips[num_players - 1]);
                         } else {
                             chips[i - 1]++;
-                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[i - 1], chips[i - 1]);
                         }
                     }
                 }
-                //TESTING
-                //printf("   TESTING ");
-                //for (int v = 0; v < 3; v++) {
-                //   printf("%d ", chips[v]);
-                //}
-                //printf("   TESTING\n");
                 printf("%s: ends her turn with %d\n", player_name[i], chips[i]);
                 if (!no_winner(chips, num_players)) {
                     loop = 0;
