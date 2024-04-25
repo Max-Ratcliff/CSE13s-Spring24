@@ -22,7 +22,7 @@ Position roll_dice(void) {
 
 int no_winner(int chips[], int num_players) {
     int has_chip = 0;
-    int last_player_with_chip;
+    int last_player_with_chip = -1;
     for (int i = 0; i < num_players; i++) {
         if (chips[i] > 0 && has_chip) {
             return 1;
@@ -46,7 +46,8 @@ void sim_game(int num_players) {
     int chips[num_players];
     initchips(chips, num_players);
     int roll;
-    while (no_winner(chips, num_players)) { //loop until winner
+    int loop = 1;
+    while (loop) { //loop until winner
         for (int i = 0; i < num_players; i++) {
             if (chips[i] > 0) {
                 int num_rolls = chips[i];
@@ -55,35 +56,44 @@ void sim_game(int num_players) {
                 }
                 for (int j = 0; j < num_rolls; j++) {
                     roll = roll_dice();
-                    //printf(
-                    //  "TESTING: %s: starts with: %d rolls: %d\n", player_name[i], chips[i], roll);
+                    //                   printf("   TESTING: %s: starts with: %d rolls: %d\n", player_name[i], chips[i], roll);
                     if (roll == LEFT) {
                         chips[i]--;
-                        //printf("TESTING: %s: LEFT! now %d chips\n", player_name[i], chips[i]);
+                        //                        printf("   TESTING: %s: LEFT! now %d chips\n", player_name[i], chips[i]);
                         if (i == num_players - 1) {
                             chips[0]++;
-                            //	printf("TESTING: giving %s chip! now %d chips\n", player_name[0], chips[0]);
+                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[0], chips[0]);
                         } else {
                             chips[i + 1]++;
-                            //	printf("TESTING: giving %s chip! now %d chips\n", player_name[i+1], chips[i+1]);
+                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[i+1], chips[i+1]);
                         }
                     } else if (roll == CENTER) {
                         chips[i]--;
-                        //      printf("TESTING: %s: CENTER! now %d chips\n", player_name[i], chips[i]);
+                        //                              printf("   TESTING: %s: CENTER! now %d chips\n", player_name[i], chips[i]);
                     } else if (roll == RIGHT) {
                         chips[i]--;
-                        //    printf("TESTING: %s: RIGHT! now %d chips\n", player_name[i], chips[i]);
+                        //                            printf("   TESTING: %s: RIGHT! now %d chips\n", player_name[i], chips[i]);
                         if (i == 0) {
                             chips[num_players - 1]++;
-                            //	printf("TESTING: giving %s chip! now %d chips\n", player_name[num_players - 1], chips[num_players - 1]);
+                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[num_players - 1], chips[num_players - 1]);
                         } else {
                             chips[i - 1]++;
-                            //	printf("TESTING: giving %s chip! now %d chips\n", player_name[i - 1], chips[i - 1]);
+                            //                            	printf("   TESTING: giving %s chip! now %d chips\n", player_name[i - 1], chips[i - 1]);
                         }
                     }
                 }
+                //TESTING
+                //printf("   TESTING ");
+                //for (int v = 0; v < 3; v++) {
+                //   printf("%d ", chips[v]);
+                //}
+                //printf("   TESTING\n");
+                printf("%s: ends her turn with %d\n", player_name[i], chips[i]);
+                if (!no_winner(chips, num_players)) {
+                    loop = 0;
+                    break;
+                }
             }
-            printf("%s: ends her turn with %d\n", player_name[i], chips[i]);
         }
     }
 }
