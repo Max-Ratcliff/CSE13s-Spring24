@@ -46,7 +46,7 @@ void sim_game(int num_players) {
     int chips[num_players];
     initchips(chips, num_players);
     int roll;
-    do { //loop until winner
+    while (no_winner(chips, num_players)) { //loop until winner
         for (int i = 0; i < num_players; i++) {
             if (chips[i] > 0) {
                 int num_rolls = chips[i];
@@ -85,7 +85,7 @@ void sim_game(int num_players) {
             }
             printf("%s: ends her turn with %d\n", player_name[i], chips[i]);
         }
-    } while (no_winner(chips, num_players));
+    }
 }
 
 int main(void) {
