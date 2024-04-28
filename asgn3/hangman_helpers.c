@@ -41,12 +41,14 @@ char read_letter(void) {
     //bool error = true;
     //while (error) {
     //    printf("Guess a letter: ");
-    int scanf_result = scanf("%c", &letter);
+    scanf("%c", &letter);
     //    if (scanf_result < 1 || is_lowercase_letter(letter)) {
     //        fprintf(stderr, "Invalid letter");
     //        continue;
     //    }
     //    error = false;
     //}
+    //printf("%c\n", letter);
+    //printf("%d\n", letter);
     return letter;
 }
