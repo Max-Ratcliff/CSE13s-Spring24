@@ -38,15 +38,15 @@ char read_letter(void) {
     char letter;
 
     //check for errors
-    bool error = true;
-    while (error) {
+    //bool error = true;
+    //while (error) {
         printf("Guess a letter: ");
         int scanf_result = scanf("%c", &letter);
-        if (scanf_result < 1 || is_lowercase_letter(letter)) {
-            fprintf(stderr, "Invalid letter");
-            continue;
-        }
-        error = false;
-    }
+    //    if (scanf_result < 1 || is_lowercase_letter(letter)) {
+    //        fprintf(stderr, "Invalid letter");
+    //        continue;
+    //    }
+    //    error = false;
+    //}
     return letter;
 }
