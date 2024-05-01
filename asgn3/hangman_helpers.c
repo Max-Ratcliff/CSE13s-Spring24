@@ -40,8 +40,9 @@ char read_letter(void) {
     //check for errors
     //bool error = true;
     //while (error) {
-    //    printf("Guess a letter: ");
+    printf("Guess a letter: ");
     scanf("%c", &letter);
+    getchar();
     //    if (scanf_result < 1 || is_lowercase_letter(letter)) {
     //        fprintf(stderr, "Invalid letter");
     //        continue;
