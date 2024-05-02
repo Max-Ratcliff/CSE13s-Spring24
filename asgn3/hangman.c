@@ -1,28 +1,68 @@
 #include "hangman_helpers.h"
 
-int main(void) {
-    printf("testing helper functions\n");
-    printf("testing read letter expect the letter you enter\n");
-    char test1 = read_letter();
-    printf("%c\n", test1);
+int main(int argc, char *argv[]) {
+    int num_mistakes = 0;
+    char guess = 'A';
+    char mistakes[LOSING_MISTAKE] = { '_' };
+    char *secret = argv[1];
+    int secret_len = (int) strlen(argv[1]);
+    char obfuscated[MAX_LENGTH] = { '_' };
 
-    printf("testing string contains, expect: 1 and 0\n");
-    bool test2 = string_contains_character("I am lolol", 'a');
-    bool test3 = string_contains_character("I am lolol", 'b');
-    printf("%d\n", test2);
-    printf("%d\n", test3);
+    if (argc != 2) {
+        printf("invalid argument quantity\n");
+        return 1;
+    }
+    if (!is_valid_secret(argv[1])) {
+        return 1;
+    }
 
-    printf("testing is lowercase expect: 0 and 1\n");
-    bool test4 = is_lowercase_letter('A');
-    bool test5 = is_lowercase_letter('a');
-    printf("%d\n", test4);
-    printf("%d\n", test5);
+    while (num_mistakes <= LOSING_MISTAKE) {
+        printf("%s\n", arts[num_mistakes]);
+        for (int i = 0; i < secret_len; i++) {
+            if (is_lowercase_letter(obfuscated[i])) {
+                continue;
 
-    printf("testing is valid secret, expect: 1 and 0\n");
-    bool test6 = is_valid_secret("the quick brown fox's jump over the lazy-dogs");
-    bool test7 = is_valid_secret("the*quick$brow# fox's jump over the lazy-dogs");
-    printf("%d\n", test6);
-    printf("%d\n", test7);
+            } else if (secret[i] == guess || secret[i] == '\'' || secret[i] == ' '
+                       || secret[i] == '-' || secret[i] == '\0') {
+                obfuscated[i] = secret[i];
+            } else {
+                obfuscated[i] = '_';
+            }
+        }
+        printf("    Phrase: %s\n", obfuscated);
+        printf("Eliminated: ");
+        for (int i = 0; i < LOSING_MISTAKE; i++) {
+            if (mistakes[i] != '_') {
+                printf("%c", mistakes[i]);
+            }
+        }
+        printf("\n\n");
+
+        if (strcmp(obfuscated, secret) == 0) {
+            printf("You win! The secret phrase was: %s\n", secret);
+            break;
+        }
+
+        if (num_mistakes == LOSING_MISTAKE) {
+            printf("You lose! The secret phrase was: %s\n", secret);
+            break;
+        }
+
+        do {
+            guess = (char) read_letter();
+            for (int i = 0; i < LOSING_MISTAKE; i++) {
+                if (guess == mistakes[i]) {
+                    guess = 'A';
+                    break;
+                }
+            }
+        } while (!is_lowercase_letter(guess));
+
+        if (!string_contains_character(secret, guess)) {
+            mistakes[num_mistakes] = guess;
+            num_mistakes++;
+        }
+    }
 
     return 0;
 }

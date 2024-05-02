@@ -37,19 +37,9 @@ bool string_contains_character(const char *s, char c) {
 char read_letter(void) {
     char letter;
 
-    //check for errors
-    //bool error = true;
-    //while (error) {
     printf("Guess a letter: ");
     scanf("%c", &letter);
     getchar();
-    //    if (scanf_result < 1 || is_lowercase_letter(letter)) {
-    //        fprintf(stderr, "Invalid letter");
-    //        continue;
-    //    }
-    //    error = false;
-    //}
-    //printf("%c\n", letter);
-    //printf("%d\n", letter);
+
     return letter;
 }
