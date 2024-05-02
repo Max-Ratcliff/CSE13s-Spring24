@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
         printf("    Phrase: %s\n", obfuscated);
         printf("Eliminated: ");
         for (int i = 0; i < LOSING_MISTAKE; i++) {
-            if (mistakes[i] != '_') {
+            if (is_lowercase_letter(mistakes[i])) {
                 printf("%c", mistakes[i]);
             }
         }
