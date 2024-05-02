@@ -31,9 +31,9 @@ int main(int argc, char *argv[]) {
         }
         printf("    Phrase: %s\n", obfuscated);
         printf("Eliminated: ");
-        for (int i = 0; i < LOSING_MISTAKE; i++) {
-            if (is_lowercase_letter(mistakes[i])) {
-                printf("%c", mistakes[i]);
+        for (int i = 97; i < 123; i++) {
+            if (string_contains_character(mistakes, (char) i)) {
+                printf("%c", (char) i);
             }
         }
         printf("\n\n");
