@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
                     break;
                 }
             }
-        } while (!is_lowercase_letter(guess));
+        } while (!is_lowercase_letter(guess) || string_contains_character(obfuscated, guess));
 
         if (!string_contains_character(secret, guess)) {
             mistakes[num_mistakes] = guess;
