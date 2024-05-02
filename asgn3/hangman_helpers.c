@@ -15,12 +15,13 @@ bool is_valid_secret(const char *secret) {
                    || (int) secret[i] == 45) { //if character is an accepted special
             continue;
         } else if ((int) secret[i] == 0) {
-            break;
+            return true;
         }
         printf("invalid character: '%c'\n", secret[i]);
         return false;
     }
-    return true; //valid secret
+    printf("the secret phrase is over 256 characters\n");
+    return false; //valid secret
 }
 
 bool string_contains_character(const char *s, char c) {
