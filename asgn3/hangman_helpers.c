@@ -8,7 +8,7 @@ bool is_lowercase_letter(char c) {
 }
 
 bool is_valid_secret(const char *secret) {
-    for (int i = 0; i < 256; i++) { //loop from start to end of possible string length
+    for (int i = 0; i <= 256; i++) { //loop from start to end of possible string length
         if (is_lowercase_letter(secret[i])) { //if character is a valid letter between a-z
             continue;
         } else if ((int) secret[i] == 32 || (int) secret[i] == 39
@@ -19,7 +19,7 @@ bool is_valid_secret(const char *secret) {
         }
         printf("invalid character: '%c'\n", secret[i]);
         printf("the secret phrase must contain only lowercase letters, spaces, hyphens, and "
-               "apostrophes");
+               "apostrophes\n");
         return false;
     }
     printf("the secret phrase is over 256 characters\n");
