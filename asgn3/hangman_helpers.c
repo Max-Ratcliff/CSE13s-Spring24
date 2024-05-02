@@ -18,6 +18,8 @@ bool is_valid_secret(const char *secret) {
             return true;
         }
         printf("invalid character: '%c'\n", secret[i]);
+        printf("the secret phrase must contain only lowercase letters, spaces, hyphens, and "
+               "apostrophes");
         return false;
     }
     printf("the secret phrase is over 256 characters\n");
