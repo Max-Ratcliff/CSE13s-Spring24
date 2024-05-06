@@ -75,22 +75,17 @@ List what you will do to test your code. Make sure this is comprehensive. \footn
 
 \section*{Program Design}
 
-Audience: Write this section for someone
-who will maintain your program.
-In industry you maintain your own
-programs, and so your audience could be
-future you! List
-the main data structures and the main
-algorithms. You are answering the basic
-question, ``How is this thing organized
-so that I can have a chance of fixing
-it?''. This section will be longer for a
-more complicated program and shorter for
-a less complicated program.
+\textbf{The program will be written in main and will loop until 16 bytes can no longer be read it will first print the starting index of the first byte and then print the contents in hex and then the contents interpreted as ascii.}
 
 \subsection*{Pseudocode}
-Give the reader a top down description of your code! How will you break it down? What features will your code have? 
-How will you implement each function. 
+
+\textbf{parse argv: if file name provided open file and start reading into buffer, if no filename provided get input from stdin.
+initialize line counter
+loop until result from read = 0
+print index padded to 8
+step through buffer and print as hex
+if res < 16 pad the rest with spaces
+print the buffer as ascii and print a newline}
 
 \subsection*{Function Descriptions}
 For each function in your program, you will need to explain your thought process. This means doing the following
