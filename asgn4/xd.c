@@ -37,15 +37,17 @@ int main(int argc, char **argv) {
             printf("%08x: ", line_count); //leftmost column printing index of the first byte
             for (int i = 0; i < 16; i++) { //middle column prints 16 bytes of the file in hex
                 if (i < res) {
-                    printf("%02x", buffer[i]);
+                    printf("%02x", (unsigned char) buffer[i]);
+                } else {
+                    printf("  "); // 2 white spaces
                 }
                 if (i + 1 < res) {
-                    printf("%02x ", buffer[i + 1]);
+                    printf("%02x ", (unsigned char) buffer[i + 1]);
                     i++;
 
                 } else {
-                    printf("      "); //3 white spaces
-                    i += 2;
+                    printf("   "); //3 white spaces
+                    i++;
                 }
             }
             printf(" ");
