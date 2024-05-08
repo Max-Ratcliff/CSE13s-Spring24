@@ -21,7 +21,6 @@ int main(int argc, char **argv) {
             exit(1);
         }
     } else {
-        printf("not enough arguments\n");
         exit(1);
     }
 

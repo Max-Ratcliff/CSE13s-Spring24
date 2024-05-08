@@ -1,8 +1,8 @@
 CC = clang
-CFLAGS = -Werror -Wall -Wextra -Wconversion -Wdouble-promotion -Wstrict-prototypes -pedantic -g
+CFLAGS = -Werror -Wall -Wextra -Wconversion -Wdouble-promotion -Wstrict-prototypes -pedantic
 LFLAGS =
 EXEC = xd
-HEADERS = 
+HEADERS =
 
 all: $(EXEC)
 
