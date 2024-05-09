@@ -4,40 +4,41 @@
 #include <stdlib.h>
 #include <unistd.h>
 int main(int argc, char **argv) {
-    int fd = 0;
+    int d = 0;
     if (argc == 2) {
-        char *filename = argv[1];
-        fd = open(filename, O_RDONLY);
-        if (fd == -1) {
+        char *nm = argv[1];
+        d = open(nm, O_RDONLY);
+        if (d == -1) {
             exit(1);
         }
     } else {
         exit(1);
     }
-    int line_count = 0;
+    ssize_t r;
+    int l = 0;
     do {
-        unsigned char buffer[16];
-        ssize_t res = read(fd, buffer, 16);
-        if (res == -1) {
+        unsigned char b[16];
+        r = read(d, b, 16);
+        if (r == -1) {
             exit(1);
-        } else if (res > 0) {
-            printf("%08x: ", line_count);
-            while (res < 16) {
-                ssize_t new_res = read(fd, buffer + res, (size_t) (16 - res));
-                if (new_res > 0) {
-                    res += new_res;
+        } else if (r > 0) {
+            printf("%08x: ", l);
+            while (r < 16) {
+                ssize_t nr = read(d, b + r, (size_t) (16 - r));
+                if (nr > 0) {
+                    r += nr;
                 } else {
                     break;
                 }
             }
             for (int i = 0; i < 16; i++) {
-                if (i < res) {
-                    printf("%02x", buffer[i]);
+                if (i < r) {
+                    printf("%02x", b[i]);
                 } else {
                     printf("  ");
                 }
-                if (i + 1 < res) {
-                    printf("%02x ", buffer[i + 1]);
+                if (i + 1 < r) {
+                    printf("%02x ", b[i + 1]);
                     i++;
                 } else {
                     printf("   ");
@@ -45,15 +46,15 @@ int main(int argc, char **argv) {
                 }
             }
             printf(" ");
-            for (int i = 0; i < res; ++i) {
-                printf("%c", isprint(buffer[i]) ? buffer[i] : '.');
+            for (int i = 0; i < r; ++i) {
+                printf("%c", isprint(b[i]) ? b[i] : '.');
             }
             printf("\n");
         }
-        line_count += 16;
-    } while (res > 0);
-    res = close(fd);
-    if (res == -1) {
+        l += 16;
+    } while (r > 0);
+    r = close(d);
+    if (r == -1) {
         exit(1);
     }
     return 0;
