@@ -27,13 +27,21 @@ int main(int argc, char **argv) {
     ssize_t res = 0;
     int line_count = 0;
     do {
-        char buffer[16]; //initialize buffer to be 16 characters long
+        unsigned char buffer[16]; //initialize buffer to be 16 characters long
         res = read(fd, buffer, 16); //exit codes: -1 =  error, 0 = EOF
         if (res == -1) {
             //printf("Error during read.\n");
             exit(1);
         } else if (res > 0) {
             printf("%08x: ", line_count); //leftmost column printing index of the first byte
+            while (res < 16) {
+                int new_res = read(fd, buffer, 16);
+                if (new_res > 0) {
+                    res += new_res;
+                } else if {
+                    break;
+                }
+            }
             for (int i = 0; i < 16; i++) { //middle column prints 16 bytes of the file in hex
                 if (i < res) {
                     printf("%02x", (unsigned char) buffer[i]);
