@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
         fd = open(filename, O_RDONLY);
 
         if (fd == -1) {
-            printf("Can't open file %s\n", filename);
+            //printf("Can't open file %s\n", filename);
             exit(1);
         }
     } else {
@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
         char buffer[16]; //initialize buffer to be 16 characters long
         res = read(fd, buffer, 16); //exit codes: -1 =  error, 0 = EOF
         if (res == -1) {
-            printf("Error during read.\n");
+            //printf("Error during read.\n");
             exit(1);
         } else if (res > 0) {
             printf("%08x: ", line_count); //leftmost column printing index of the first byte
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
     res = close(fd);
 
     if (res == -1) {
-        printf("Error during close.\n");
+        //printf("Error during close.\n");
         exit(1);
     }
 
