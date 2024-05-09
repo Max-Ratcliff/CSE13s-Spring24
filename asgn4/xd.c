@@ -35,10 +35,10 @@ int main(int argc, char **argv) {
         } else if (res > 0) {
             printf("%08x: ", line_count); //leftmost column printing index of the first byte
             while (res < 16) {
-                int new_res = read(fd, buffer, 16);
+                ssize_t new_res = read(fd, buffer, 16);
                 if (new_res > 0) {
                     res += new_res;
-                } else if {
+                } else {
                     break;
                 }
             }
