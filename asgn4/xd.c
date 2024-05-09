@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
         } else if (res > 0) {
             printf("%08x: ", line_count); //leftmost column printing index of the first byte
             while (res < 16) {
-                ssize_t new_res = read(fd, buffer, 16);
+                ssize_t new_res = read(fd, buffer, (size_t) (16 - res));
                 if (new_res > 0) {
                     res += new_res;
                 } else {
