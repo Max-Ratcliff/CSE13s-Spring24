@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -Werror -Wall -Wextra -Wconversion -Wdouble-promotion -Wstrict-prototypes -pedantic
 LFLAGS =
-EXEC = tryforec
+EXEC = xd
 HEADERS =
 
 all: $(EXEC)

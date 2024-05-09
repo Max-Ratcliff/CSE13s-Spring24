@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
         if (d == -1) {
             exit(1);
         }
-    } else {
+    } else if (argc != 1) {
         exit(1);
     }
     ssize_t r;
