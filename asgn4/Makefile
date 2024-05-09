@@ -1,12 +1,12 @@
 CC = clang
 CFLAGS = -Werror -Wall -Wextra -Wconversion -Wdouble-promotion -Wstrict-prototypes -pedantic
 LFLAGS =
-EXEC = xd
+EXEC = tryforec
 HEADERS =
 
 all: $(EXEC)
 
-$(EXEC): $(EXEC).o xd.o 
+$(EXEC): $(EXEC).o  
 	$(CC) $^ $(LFLAGS) -o $@
 
 %.o: %.c $(HEADERS)
