@@ -59,7 +59,7 @@ Please answer the following questions before you start coding. They will help gu
 \begin{itemize}
     \item Are there any cases where our sin or cosine formulae can't be used? How can we avoid this? \textbf{if we required super precise output for any reason then our sin and cosine formulae couldnt be used cause its only accurate to a point. in that case we'd either need to shirnk epsilon to make the result more accurate, or use the -m flag to use the provided math.h sin and cos functions which have a much higher degree of accuracy }
     \item What ways (other than changing epsilon) can we use to make our results more accurate? \textbf{we can use trig identies such as $Tan(x)=\frac{Sin(x)}{Cos(x)}$ or $Sin^2(x) + Cos^2(x) = 1$ this way we only have to compute one of the trig functions and can convert them into others to avoid losing accuracy.} \footnote{hint: Use trig identities}
-    \item What does it mean to normalize input? What would happen if you didn't?
+    \item What does it mean to normalize input? What would happen if you didn't? \textbf{normalizing the input means to make sure the input can be understood by our program by ensuring it looks a certain way or sits between certain values. For this program we will normalize our input for trig functions to be in the range of 0 to $2\pi$ if we didnt normalize it we would most likely end up with incorrect input}
     \item How would you handle the expression $3 2 1 +$? What should the output be? How can we make this a more understandable RPN expression? \textbf{for since the calculator splits on space it would first push $321$ to the stack and then treat '$+$' as a unary operator which would then just output $321$ }
     \item Does RPN need parenthesis? Why or why not? \textbf{RPN does not need parenthesis because the order of operations is handled by the stack and the calculator just operates down until there are no items remaining in the stack.}
     
@@ -72,7 +72,7 @@ Please answer the following questions before you start coding. They will help gu
 
 \section*{How to Use the Program}
 
-\textbf{first compile the program with \lsinline{make} and then run the program with \lsinline{./calc} with the optional flags \lsinline{-h -m} which brings up the help menu and makes the calculator use trig functions from math.h respectively. You will then be able to provide inputs such as \lsinline{3 2 1 + +} and recieve output, which in the example case should be 6. You can exit at any time using \lstinline{ctrl+d}.}
+\textbf{first compile the program with \lstinline{make} and then run the program with \lstinline{./calc} with the optional flags \lstinline{-h -m} which brings up the help menu and makes the calculator use trig functions from math.h respectively. You will then be able to provide inputs such as \lstinline{3 2 1 + +} and recieve output, which in the example case should be 6. You can exit at any time using \lstinline{ctrl+d}.}
 
 \section*{Program Design}
 

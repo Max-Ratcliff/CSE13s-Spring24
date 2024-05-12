@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.17)  12 MAY 2024 05:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.17)  12 MAY 2024 06:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -188,13 +188,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
 
-Enter file name: ls
-
-! LaTeX Error: File `ls.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
 Enter file name: 
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
@@ -295,7 +288,7 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count287
 \l__pdf_internal_box=\box53
 )
-No file main.aux.
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
@@ -316,7 +309,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
 LaTeX Font Info:    ... okay on input line 40.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
 LaTeX Font Info:    ... okay on input line 40.
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count288
 \scratchdimen=\dimen164
@@ -354,6 +347,8 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 40.
 LaTeX Info: Redefining \pageref on input line 40.
 LaTeX Info: Redefining \nameref on input line 40.
+
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -406,30 +401,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 61.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 61.
-! Undefined control sequence.
-<argument> ... compile the program with \lsinline 
-                                                  {make} and then run the pr...
-l.75 ...xit at any time using \lstinline{ctrl+d}.}
-                                                  
-? 
-! Undefined control sequence.
-<argument> ...then run the program with \lsinline 
-                                                  {./calc} with the optional...
-l.75 ...xit at any time using \lstinline{ctrl+d}.}
-                                                  
-? 
-! Undefined control sequence.
-<argument> ...} with the optional flags \lsinline 
-                                                  {-h -m} which brings up th...
-l.75 ...xit at any time using \lstinline{ctrl+d}.}
-                                                  
-? 
-! Undefined control sequence.
-<argument> ...to provide inputs such as \lsinline 
-                                                  {3 2 1 + +} and recieve ou...
-l.75 ...xit at any time using \lstinline{ctrl+d}.}
-                                                  
-? 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 75.
 [1
@@ -437,23 +408,17 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 No file main.bbl.
 [2] (./main.aux)
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12125 strings out of 480247
- 192705 string characters out of 5896151
- 488337 words of memory out of 5000000
- 29947 multiletter control sequences out of 15000+600000
+ 12128 strings out of 480247
+ 192727 string characters out of 5896151
+ 492555 words of memory out of 5000000
+ 29944 multiletter control sequences out of 15000+600000
  474492 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 67i,11n,77p,479b,1092s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,11n,77p,479b,1090s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/mwratcliff/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm100
 0.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
@@ -467,7 +432,7 @@ lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.
 pfb>
-Output written on main.pdf (2 pages, 153167 bytes).
+Output written on main.pdf (2 pages, 155053 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
