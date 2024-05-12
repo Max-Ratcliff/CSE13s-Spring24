@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Overleaf Template
+% Authors: Dr. Veenstra and Jess Srinivas
+% V2 with better boxes!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CHANGE THESE DEFINITIONS
+
+\newcommand{\NAME}{Max Ratcliff}
+\newcommand{\ASSIGNMENT}{Assignment 5 -- Calc Report}
+\newcommand{\CLASS}{CSE 13S -- Spring 24}
+
+% THEN WRITE YOUR PARAGRAPHS STARTING IN THE
+% "Purpose" SECTION (AROUND LINE 44).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{underscore}
+\usepackage{subcaption}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
+\title{\ASSIGNMENT}
+\author{\NAME}
+\date{\CLASS}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead{}
+\fancyfoot[L]{\ASSIGNMENT\ -- \CLASS\ -- \NAME}
+\fancyfoot[R]{\thepage}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BEGIN WRITING YOUR DESIGN REPORT HERE
+
+\section*{Purpose}
+
+\textbf{The purpose of this program is to implement a reverse polish notation calculator that can compute trig functions as well as both bunary and unary operators}
+
+\section*{Questions}
+Please answer the following questions before you start coding. They will help guide you through the assignment. To make the grader's life easier, please do not remove the questions, and simply put your answers below the text of each question. 
+\begin{itemize}
+    \item Are there any cases where our sin or cosine formulae can't be used? How can we avoid this? \textbf{if we required super precise output for any reason then our sin and cosine formulae couldnt be used cause its only accurate to a point. in that case we'd either need to shirnk epsilon to make the result more accurate, or use the -m flag to use the provided math.h sin and cos functions which have a much higher degree of accuracy }
+    \item What ways (other than changing epsilon) can we use to make our results more accurate? \textbf{we can use trig identies such as $Tan(x)=\frac{Sin(x)}{Cos(x)}$ or $Sin^2(x) + Cos^2(x) = 1$ this way we only have to compute one of the trig functions and can convert them into others to avoid losing accuracy.} \footnote{hint: Use trig identities}
+    \item What does it mean to normalize input? What would happen if you didn't?
+    \item How would you handle the expression $3 2 1 +$? What should the output be? How can we make this a more understandable RPN expression? \textbf{for since the calculator splits on space it would first push $321$ to the stack and then treat '$+$' as a unary operator which would then just output $321$ }
+    \item Does RPN need parenthesis? Why or why not? \textbf{RPN does not need parenthesis because the order of operations is handled by the stack and the calculator just operates down until there are no items remaining in the stack.}
+    
+\end{itemize}
+
+
+\subsection*{Testing}
+
+\textbf{I will test a variety of eraneuous inputs, such as letters and special characters, I will test to ensure unary operators are handled as well as test to make sure an improper amount of operators are handled. I will also test the bounds of the calculator by providing very very big and very very small numbers}
+
+\section*{How to Use the Program}
+
+\textbf{first compile the program with \lsinline{make} and then run the program with \lsinline{./calc} with the optional flags \lsinline{-h -m} which brings up the help menu and makes the calculator use trig functions from math.h respectively. You will then be able to provide inputs such as \lsinline{3 2 1 + +} and recieve output, which in the example case should be 6. You can exit at any time using \lstinline{ctrl+d}.}
+
+\section*{Program Design}
+
+Audience: Write this section for someone
+who will maintain your program.
+In industry you maintain your own
+programs, and so your audience could be
+future you! List
+the main data structures and the main
+algorithms. You are answering the basic
+question, ``How is this thing organized
+so that I can have a chance of fixing
+it?''. This section will be longer for a
+more complicated program and shorter for
+a less complicated program.
+
+\subsection*{Pseudocode}
+Give the reader a top down description of your code! How will you break it down? What features will your code have? 
+How will you implement each function. 
+
+\subsection*{Function Descriptions}
+For each function in your program, you will need to explain your thought process. This means doing the following
+\begin{itemize}
+    \item The inputs of every function (even if it's not a parameter)
+    \item The outputs of every function (even if it's not the return value)
+    \item The purpose of each function, a brief description about a sentence long. 
+    \item For more complicated functions, include pseudocode that describes how the function works
+    \item For more complicated functions, also include a description of your decision making process; why you chose to use any data structures or control flows that you did.
+\end{itemize}
+Do not simply use your code to describe this. This section should be readable to a person with little to no code knowledge. 
+\textbf{DO NOT JUST PUT THE FUNCTION SIGNATURES HERE. MORE EXPLANATION IS REQUIRED.}
+
+\subsection*{Results}
+Follow the instructions on the pdf to do this. 
+In overleaf, you can drag an image straight into your source code to upload it. You can also look at \url{https://www.overleaf.com/learn/latex/Inserting_Images}
+% Any references in your report appear at
+% the end of the document automatically.
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+\end{document}
