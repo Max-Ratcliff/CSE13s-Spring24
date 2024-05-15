@@ -17,7 +17,9 @@ int main(int argc, char **argv) {
     if (opt == 'h') {
         printf("%s", USAGE);
     }
-    if (opt == 'm'){m_flag = true;}
+    if (opt == 'm') {
+        m_flag = true;
+    }
 
     while (true) {
         fprintf(stderr, "> ");
