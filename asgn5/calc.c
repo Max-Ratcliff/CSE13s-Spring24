@@ -12,12 +12,12 @@
 #include <unistd.h>
 
 int main(int argc, char **argv) {
-    //bool m_flag = false;
+    bool m_flag = false;
     int opt = getopt(argc, argv, "hm");
     if (opt == 'h') {
         printf("%s", USAGE);
     }
-    //if (opt == 'm'){m_flag = true;}
+    if (opt == 'm'){m_flag = true;}
 
     while (true) {
         fprintf(stderr, "> ");
@@ -47,13 +47,13 @@ int main(int argc, char **argv) {
                     error = true;
                     break;
                 }
-            } else if (*my_unary_operators[character] != NULL) {
+            } else if (!m_flag && *my_unary_operators[character] != NULL) {
                 if (!apply_unary_operator(*my_unary_operators[character])) {
                     fprintf(stderr, ERROR_UNARY_OPERATOR);
                     error = true;
                     break;
                 }
-            } else if (*libm_unary_operators[character] != NULL) {
+            } else if (m_flag && *libm_unary_operators[character] != NULL) {
                 if (!apply_unary_operator(*libm_unary_operators[character])) {
                     fprintf(stderr, ERROR_UNARY_OPERATOR);
                     error = true;
