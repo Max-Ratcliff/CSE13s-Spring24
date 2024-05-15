@@ -76,24 +76,18 @@ Please answer the following questions before you start coding. They will help gu
 
 \section*{Program Design}
 
-\textbf{Most of the functions will be in external files that will be included in the calc.c file}
-
-Audience: Write this section for someone
-who will maintain your program.
-In industry you maintain your own
-programs, and so your audience could be
-future you! List
-the main data structures and the main
-algorithms. You are answering the basic
-question, ``How is this thing organized
-so that I can have a chance of fixing
-it?''. This section will be longer for a
-more complicated program and shorter for
-a less complicated program.
+\textbf{Most of the functions will be in external files that will be included in the calc.c file. stack.c implements a basic stack with push, pop, peek, print and clear functionality, operators.c contains functions to be turned into function pointers as well as functions to apply the operations and a function to parse a number out of a string. mathlib.c contains sine, cosine, sqrt, and absolute value functions all of which exept the last use either tailor series or the babylonian method}
 
 \subsection*{Pseudocode}
-Give the reader a top down description of your code! How will you break it down? What features will your code have? 
-How will you implement each function. 
+
+\textbf{first process flags, if help flag print help message
+start the processing of the program and get an expression from stdin into a buffer, then split the expression on whitespace
+go through the expression token by token, if its a number push it to stack
+if its a binary operator perform the operation
+if its a unary operator check if -m flag is present if so use math.h trig fucntions otherwise use the ones written in math.c
+if its neither a binary or unary operator print error message
+if there is no error print the stack
+clear the stack and get the next expression from stdin.}
 
 \subsection*{Function Descriptions}
 For each function in your program, you will need to explain your thought process. This means doing the following
