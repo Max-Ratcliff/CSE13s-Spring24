@@ -19,16 +19,27 @@ double operator_mul(double lhs, double rhs);
 double operator_div(double lhs, double rhs);
 
 static const binary_operator_fn binary_operators[256] = {
-    ['+'] = operator_add, ['-'] = operator_sub, ['*'] = operator_mul,
-    ['/'] = operator_div, ['%'] = fmod,
+    ['+'] = operator_add,
+    ['-'] = operator_sub,
+    ['*'] = operator_mul,
+    ['/'] = operator_div,
+    ['%'] = fmod,
 };
 
 static const unary_operator_fn my_unary_operators[256] = {
-    ['s'] = Sin, ['c'] = Cos, ['t'] = Tan, ['a'] = Abs, ['r'] = Sqrt,
+    ['s'] = Sin,
+    ['c'] = Cos,
+    ['t'] = Tan,
+    ['a'] = Abs,
+    ['r'] = Sqrt,
 };
 
 static const unary_operator_fn libm_unary_operators[256] = {
-    ['s'] = sin, ['c'] = cos, ['t'] = tan, ['a'] = fabs, ['r'] = sqrt,
+    ['s'] = sin,
+    ['c'] = cos,
+    ['t'] = tan,
+    ['a'] = fabs,
+    ['r'] = sqrt,
 };
 
 // return false if there are fewer than 2 items on the stack. otherwise, pop
