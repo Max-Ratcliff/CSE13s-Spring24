@@ -17,7 +17,7 @@ double operator_sub(double lhs, double rhs) {
 }
 
 double operator_mul(double lhs, double rhs) {
-    return lhs + rhs;
+    return lhs * rhs;
 }
 
 double operator_div(double lhs, double rhs) {
