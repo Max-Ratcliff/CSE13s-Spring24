@@ -91,15 +91,94 @@ clear the stack and get the next expression from stdin.}
 
 \subsection*{Function Descriptions}
 For each function in your program, you will need to explain your thought process. This means doing the following
+\textbf{
+    \\
+    bool apply_binary_operator()
 \begin{itemize}
-    \item The inputs of every function (even if it's not a parameter)
-    \item The outputs of every function (even if it's not the return value)
-    \item The purpose of each function, a brief description about a sentence long. 
-    \item For more complicated functions, include pseudocode that describes how the function works
-    \item For more complicated functions, also include a description of your decision making process; why you chose to use any data structures or control flows that you did.
-\end{itemize}
-Do not simply use your code to describe this. This section should be readable to a person with little to no code knowledge. 
-\textbf{DO NOT JUST PUT THE FUNCTION SIGNATURES HERE. MORE EXPLANATION IS REQUIRED.}
+    \item Inputs: function pointer
+    \item Outputs: true/false as a sucess state
+    \item pops two values from the stack and operates on them depending on which function pointer is passed, then pushes result back onto stack used for addition, subtraction, multiplication and division.  
+\end{itemize}}
+\textbf{
+    \\
+    bool apply_unary_operator()
+\begin{itemize}
+    \item Inputs: function pointer
+    \item Outputs: true/false as a sucess state
+    \item pops a value from the stack and operates on it depending on which function pointer is passed, then pushes result back onto stack used for unary '-' trig functions and sqrt
+\end{itemize}}
+\textbf{
+    \\
+    char parse_double()
+\begin{itemize}
+    \item Inputs: string and a pointer to a double
+    \item Outputs: succes state (true/false), and updated value of the double pointer
+    \item uses strtod to attempt to parse a double from a string and give the pointer that value
+\end{itemize}}
+\textbf{
+    \\
+    bool stack_push()
+\begin{itemize}
+    \item Inputs: double to push to stack
+    \item Outputs: success state(true/false)
+    \item pushes to the top of the stack ensuring stack size is updated and doesnt exeed stack capacity 
+\end{itemize}}
+\textbf{
+    \\
+    bool stack_peek()
+\begin{itemize}
+    \item Inputs: double pointer 
+    \item Outputs: success state(true/false), updated pointer value
+    \item sets the pointer to be the value on the top of the stack, throws an error if the stack is empty
+\end{itemize}}
+\textbf{
+    \\
+    bool stack_pop()
+\begin{itemize}
+    \item Inputs: double pointer
+    \item Outputs: success state(true/false), updated pointer value
+    \item sets the pointer to the value at the top of the stack and decrement the stack size, returns false if stack is empty 
+\end{itemize}}
+\textbf{
+    \\
+    bool Abs()
+\begin{itemize}
+    \item Inputs: double 
+    \item Output: double 
+    \item if the double is positive return it otherwise return its opposite 
+\end{itemize}}
+\textbf{
+    \\
+    bool Sqrt()
+\begin{itemize}
+    \item Inputs: double
+    \item Outputs: double
+    \item uses the baylonian method to find and return the square root of the double 
+\end{itemize}}
+\textbf{
+    \\
+    bool Sin()
+\begin{itemize}
+    \item Inputs: double 
+    \item Outputs: double 
+    \item normalizes the input to be between $0-2\pi$ and then uses the mclauren series for sin to approximate it stoping when the next term is EPSILON which is a value set in \texttt{mathlib.h} to $10^{-14}$. 
+\end{itemize}}
+\textbf{
+    \\
+    bool Cos()
+\begin{itemize}
+    \item Inputs: double 
+    \item Outputs: double 
+    \item normalizes the input to be between $0-2\pi$ and then uses the mclauren series for cosine to approximate it stoping when the next term is EPSILON which is a value set in \texttt{mathlib.h} to $10^{-14}$. 
+\end{itemize}}
+\textbf{
+    \\
+    bool Tan()
+\begin{itemize}
+    \item Inputs: double
+    \item Outputs: double
+    \item normalizes the input to be bewtween $0-2\pi$ and then uses the trig identity: $\tan x = \frac{\sin x}{\cos x}$ to approximate tangent
+\end{itemize}}
 
 \subsection*{Results}
 Follow the instructions on the pdf to do this. 

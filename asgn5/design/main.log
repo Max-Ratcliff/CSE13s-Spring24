@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.17)  15 MAY 2024 14:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.4.17)  16 MAY 2024 00:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,17 +405,20 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 75.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 165.
+ [3]
 No file main.bbl.
-[2] (./main.aux)
+[4] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12128 strings out of 480247
- 192727 string characters out of 5896151
- 492555 words of memory out of 5000000
- 29944 multiletter control sequences out of 15000+600000
+ 12132 strings out of 480247
+ 192773 string characters out of 5896151
+ 493555 words of memory out of 5000000
+ 29946 multiletter control sequences out of 15000+600000
  474492 words of font info for 46 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  67i,11n,77p,531b,1090s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -430,12 +433,13 @@ fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
 onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.
-pfb>
-Output written on main.pdf (2 pages, 154581 bytes).
+cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (4 pages, 172860 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 114 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
+ 14 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
