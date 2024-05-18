@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Overleaf Template
+% Authors: Dr. Veenstra and Jess Srinivas
+% V2 with better boxes!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CHANGE THESE DEFINITIONS
+
+\newcommand{\NAME}{Max Ratcliff}
+\newcommand{\ASSIGNMENT}{Assignment 5 -- Calc Report}
+\newcommand{\CLASS}{CSE 13S -- Spring 24}
+
+% THEN WRITE YOUR PARAGRAPHS STARTING IN THE
+% "Purpose" SECTION (AROUND LINE 44).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{underscore}
+\usepackage{subcaption}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
+\title{\ASSIGNMENT}
+\author{\NAME}
+\date{\CLASS}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead{}
+\fancyfoot[L]{\ASSIGNMENT\ -- \CLASS\ -- \NAME}
+\fancyfoot[R]{\thepage}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BEGIN WRITING YOUR DESIGN REPORT HERE
+
+\section*{Purpose}
+
+The purpose of this program is to design an abstract data type to implement a dictionary like data type that takes a key and returns a value representing that key in order to process large amounts of data.
+
+\section*{Questions}
+    
+\subsection*{Part I}
+in order to implement \lstinline{list_remove} I will traverse the list to find the node to remove and then update the pointer of the previous node to point to the next node instead of the node to remove
+
+in order to implement \lstinline{list_destroy} I will traverse the list backwards freeing each node until I reach the head which I will also free and then set the pointer to NULL. I can then check to make sure the memory was actually freed by running valgrind
+
+\subsection*{Part II}
+To ensure efficiency I will have a large number of bins so that there are minimal items in each and accessing each item will be faster
+
+\subsection*{Part III} 
+for now I have no plans on changing the hash function and will just use the one provided, but I will use a relatively large number of bins to ensure minimum collision handling
+
+\subsection*{uniqq}
+to implement \lstinline{uniqq} I will treat each line as a key and hash it to place each line in a bucket, then I should be able to return the number of buckets which should also return the number of unique lines
+
+\subsection*{Testing}
+List what you will do to test your code. Make sure this is comprehensive. \footnote{This question is a whole lot more vague than it has been the last few assignments. Continue to answer it with the same level of detail and thought.} Be sure to test inputs with delays and a wide range of files/characters.
+
+
+\section*{How to Use the Program}
+
+this program can be treated as a dictionary and used for a variety of purposes, after including it in a C file 
+
+\section*{Program Design}
+
+Audience: Write this section for someone
+who will maintain your program.
+In industry you maintain your own
+programs, and so your audience could be
+future you! List
+the main data structures and the main
+algorithms. You are answering the basic
+question, ``How is this thing organized
+so that I can have a chance of fixing
+it?''. This section will be longer for a
+more complicated program and shorter for
+a less complicated program.
+
+\subsection*{Pseudocode}
+Give the reader a top down description of your code! How will you break it down? What features will your code have? 
+How will you implement each function. 
+
+\subsection*{Function Descriptions}
+For each function in your program, you will need to explain your thought process. This means doing the following
+\begin{itemize}
+    \item The inputs of every function (even if it's not a parameter)
+    \item The outputs of every function (even if it's not the return value)
+    \item The purpose of each function, a brief description about a sentence long. 
+    \item For more complicated functions, include pseudocode that describes how the function works
+    \item For more complicated functions, also include a description of your decision making process; why you chose to use any data structures or control flows that you did.
+\end{itemize}
+Do not simply use your code to describe this. This section should be readable to a person with little to no code knowledge. 
+\textbf{DO NOT JUST PUT THE FUNCTION SIGNATURES HERE. MORE EXPLANATION IS REQUIRED.}
+
+\subsection*{Results}
+Follow the instructions on the pdf to do this. 
+In overleaf, you can drag an image straight into your source code to upload it. You can also look at \url{https://www.overleaf.com/learn/latex/Inserting_Images}
+% Any references in your report appear at
+% the end of the document automatically.
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+\end{document}
