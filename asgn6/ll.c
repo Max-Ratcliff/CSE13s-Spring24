@@ -48,11 +48,42 @@ item * list_find(LL *l, bool (*cmpfn)(item *,item *), item *i)
 }
 
 void list_destroy(LL** ll){
-	(void) ll;
+	if(ll == NULL || *ll == NULL){return;}
+	Node *curr = (*ll)->head;
+	Node *next_node = NULL;
+	while(curr != NULL){
+		next_node = curr->next;
+		free(curr);
+		curr = next_node;
+	}
+	(*ll)->head = NULL;
+	free(*ll);
+	*ll = NULL;
+
 	return;
 }
 void list_remove(LL* ll, bool(*cmpfn)(item *, item *), item* iptr){
-	list_find(ll, cmpfn, iptr);
+	if(ll->head == NULL){// handles no head
+		return;
+	}
+	
+	Node *curr = ll->head; //sets current pointer to the start of the linked list
+	Node *prev = NULL; 
+	if (cmpfn(&curr->data, iptr)) {//handles head being deleted
+		ll->head = curr->next;//sets new head to 2nd item of list	
+		free(curr);
+		return;
+	}
+
+        while (curr != NULL) {
+		if (cmpfn(&curr->data, iptr)) {// finds target item in list
+			prev->next = curr->next; //deletes item
+			free(curr);	//free memory
+		}
+		prev = curr; //increment to look at the next item in the list
+		curr = curr->next;
+	}
 	return;
 }
+
 
