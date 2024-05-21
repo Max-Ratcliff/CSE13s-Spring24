@@ -75,7 +75,7 @@ void list_remove(LL *ll, bool (*cmpfn)(item *, item *), item *iptr) {
     while (curr != NULL) { //loop through list
         if (cmpfn(&curr->data, iptr)) { // if current is target item
             prev->next = curr->next; //deletes item
-            if (ll->tail == n) { //item to be deleted is the tail
+            if (ll->tail == curr) { //item to be deleted is the tail
                 ll->tail = prev; //move tail back
             }
             free(curr); //free deleted item memory
