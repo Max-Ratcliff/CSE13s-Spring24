@@ -2,19 +2,15 @@ CC = clang
 CFLAGS = -Werror -Wall -Wextra -Wconversion -Wdouble-promotion -Wstrict-prototypes -pedantic
 LFLAGS = 
 EXEC = uniqq
-HEADERS = item.h ll.h hash.h dictwords.h badhash.h
+HEADERS = item.h ll.h hash.h dictwords.h
 
 all: toy bench1 bench2 uniqq
 
-#$(EXEC): dictwords_hash.o abstractwords.o bench2.o hash.o ll.o item.o badhash.o
-	#$(CC) $^ $(LFLAGS) -o $@
+$(EXEC): uniqq.o hash.o ll.o item.o badhash.o
+	$(CC) $^ $(LFLAGS) -o $@
 
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $<
-
-
-$(EXEC): dictwords_hash.o abstractwords.o bench2.o hash.o ll.o item.o badhash.o
-	$(CC) $^ $(LFLAGS) -o $@
 
 toy: toy.o ll.o item.o
 	$(CC) $^ $(LFLAGS) -o $@
@@ -27,7 +23,7 @@ bench2: dictwords_hash.o abstractwords.o bench2.o hash.o ll.o item.o badhash.o
 
 
 clean:
-	rm -rf $(EXEC) *.o
+	rm -rf $(EXEC) toy bench1 bench2 *.o
 
 format:
 	clang-format -i -style=file *.[ch]

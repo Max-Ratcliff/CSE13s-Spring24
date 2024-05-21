@@ -1,30 +1,26 @@
-#include "badhash.h"
 #include "hash.h"
-#include "item.h"
-#include "ll.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
-int main(int argc, char **argv) {
+int main() {
     int counter = 0;
     Hashtable *h = hash_create();
+    char buffy[1024];
     while (true) {
-        char buffy[1024];
 
-        if (fgets(buffy, 1024, stdin) == NULL) {
+        if (!fgets(buffy, 1024, stdin)) {
             break;
         }
         if (!hash_get(h, buffy)) {
             hash_put(h, buffy, 1);
-        } else {
-            count++;
+            counter++;
         }
     }
-    hash_destroy(*h);
-    printf("&d", counter);
+    printf("%d\n", counter);
+    hash_destroy(&h);
 
     return 0;
 }
