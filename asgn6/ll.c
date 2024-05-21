@@ -57,7 +57,7 @@ void list_destroy(LL **ll) {
     }
     (*ll)->head = NULL;
     free(*ll);
-    //*ll = NULL;
+    *ll = NULL;
 
     return;
 }
