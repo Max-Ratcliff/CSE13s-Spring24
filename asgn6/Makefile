@@ -23,7 +23,7 @@ bench2: dictwords_hash.o abstractwords.o bench2.o hash.o ll.o item.o badhash.o
 
 
 clean:
-	rm -rf $(EXEC) toy bench1 bench2 *.o
+	rm -rf $(EXEC) toy bench1 bench2 *o
 
 format:
 	clang-format -i -style=file *.[ch]
