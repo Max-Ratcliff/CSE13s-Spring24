@@ -16,6 +16,7 @@ struct Node {
 typedef struct LL LL;
 struct LL {
     Node *head;
+    Node *tail;
 };
 
 LL *list_create(void);

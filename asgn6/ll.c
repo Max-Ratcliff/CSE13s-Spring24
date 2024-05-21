@@ -22,13 +22,11 @@ bool list_add(LL *l, item *i) {
     n->next = NULL;
     if (l->head == NULL) {
         l->head = n;
+        l->tail = n;
         return true;
     } else {
-        Node *tail = l->head;
-        while (tail->next != NULL) {
-            tail = tail->next;
-        }
-        tail->next = n;
+        l->tail->next = n;
+        l->tail = n;
         return true;
     }
 }
@@ -74,10 +72,13 @@ void list_remove(LL *ll, bool (*cmpfn)(item *, item *), item *iptr) {
         return;
     }
 
-    while (curr != NULL) {
-        if (cmpfn(&curr->data, iptr)) { // finds target item in list
+    while (curr != NULL) { //loop through list
+        if (cmpfn(&curr->data, iptr)) { // if current is target item
             prev->next = curr->next; //deletes item
-            free(curr); //free memory
+            if (ll->tail == n) { //item to be deleted is the tail
+                ll->tail = prev; //move tail back
+            }
+            free(curr); //free deleted item memory
             return;
         }
         prev = curr; //increment to look at the next item in the list
