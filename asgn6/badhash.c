@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <string.h>
 
 size_t hash(char *key) {

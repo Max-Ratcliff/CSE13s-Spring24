@@ -1,14 +1,14 @@
 #ifndef _HASH
 
 #define _HASH
+#define BUCKETS 1000
 
 #include "ll.h"
 
 typedef struct Hashtable Hashtable;
 
 struct Hashtable {
-    // your datastructure here; this is just a placeholder
-    int h;
+    LL *bucket[BUCKETS];
 };
 
 Hashtable *hash_create(void);

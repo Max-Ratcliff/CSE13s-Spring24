@@ -2,10 +2,10 @@ CC = clang
 CFLAGS = -Werror -Wall -Wextra -Wconversion -Wdouble-promotion -Wstrict-prototypes -pedantic
 LFLAGS = 
 EXEC = uniqcounter
-HEADERS = item.h ll.h hash.h dictwords.h
+HEADERS = item.h ll.h hash.h dictwords.h badhash.h
 
-#all: toy bench1 bench2
-all: toy
+all: toy bench1 bench2
+#all: toy
 
 $(EXEC): main.o ll.o item.o
 	$(CC) $^ $(LFLAGS) -o $@
