@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Overleaf Template
+% Authors: Dr. Veenstra and Jess Srinivas
+% V2 with better boxes!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CHANGE THESE DEFINITIONS
+
+\newcommand{\NAME}{Your Name}
+\newcommand{\ASSIGNMENT}{Assignment 5 -- Calc Report Template}
+\newcommand{\CLASS}{CSE 13S -- Spring 24}
+
+% THEN WRITE YOUR PARAGRAPHS STARTING IN THE
+% "Purpose" SECTION (AROUND LINE 44).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{underscore}
+\usepackage{subcaption}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+
+\title{\ASSIGNMENT}
+\author{\NAME}
+\date{\CLASS}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyfoot{}
+\fancyhead{}
+\fancyfoot[L]{\ASSIGNMENT\ -- \CLASS\ -- \NAME}
+\fancyfoot[R]{\thepage}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% BEGIN WRITING YOUR DESIGN REPORT HERE
+
+\section*{Purpose}
+
+Audience for this section: Pretend that
+you are working in industry, and write
+this paragraph for your boss. You are
+answering the basic question, ``What does
+this thing do?''. This section can be
+short. A single paragraph is okay. 
+
+Do not just copy the assignment PDF to complete this section, use your own words. 
+
+\section*{Questions}
+\begin{itemize}
+    \item What benefits do adjacency lists have? What about adjacency matrices? \textbf{Adjecency lists are faster on a smaller data set, where theres less items to traverse, becuase they are relatively easy to traverse, but they have to scan the whole list to find the item they want to access, they are also easier to add to as you can just allocate more memory. Matrices on the other hand are faster with large datasets since you can easily acess individual entries, but they are hard to dynamically increase since you have to add to both the rows and collumns of the matrix }
+    \item Which one will you use. Why did we chose that (hint: you use both) \textbf{I will use the matrix cause we only need to initialize the graph at the begining and dont need to add to it which will make implementation and accessing the elements easier.}
+    \item If we have found a valid path, do we have to keep looking? Why or why not? \textbf{we have to keep looking untill we find the shortest path.}
+    \item If we find 2 paths with the same weights, which one do we choose? \textbf{we will use the one we found first because once we find a path that works we'll only replace it with something shorter, ignoring other options with the same or bigger weight.}
+    \item Is the path that is chosen deterministic? Why or why not? \textbf{yes it will be deterministic because we will always traverse the matrix in the same order.}
+    \item What type of graph does this assignment use? Describe it as best as you can \textbf{ } 
+    \item What constraints do the edge weights have (think about this one in context of Alissa)? How could we optimize our dfs further using some of the constraints we have?
+    
+\end{itemize}
+
+
+\subsection*{Testing}
+List what you will do to test your code. Make sure this is comprehensive. \footnote{This question is a whole lot more vague than it has been the last few assignments. Continue to answer it with the same level of detail and thought.} Be sure to test inputs with delays and a wide range of files/characters.
+
+
+\section*{How to Use the Program}
+
+Audience: Write this section for the user
+of your program. You are answering the
+basic question, ``How do I use this
+thing?''. Don't copy the assignment
+exactly; explain this in your own
+words.
+This section will be longer for a more 
+complicated program and shorter for a
+less complicated program.
+You should show how to compile and run your program. 
+You should also describe any optional flags or inputs that
+your program uses, and what they do. 
+
+To show ``code font'' text within a paragraph,
+you can use \lstinline|\lstinline{}|,
+which will look like this: \lstinline|text|.
+
+
+For a code block,
+use \lstinline|\begin{lstlisting}| and
+\lstinline|\end{lstlisting}|,
+which will look like this:
+
+\begin{lstlisting}
+Here is some code in lstlisting.
+\end{lstlisting}
+
+And if you want a box around the code
+text, then 
+use \lstinline|\begin{lstlisting}[frame=single]| and
+\lstinline|\end{lstlisting}|
+
+which will look like this:
+
+\begin{lstlisting}[frame=single]
+Here is some framed code (lstlisting) text.
+\end{lstlisting}
+
+Want to make a footnote?
+Here's how.\footnote{This is my footnote.}
+
+Do you need to cite a reference?
+You do that by putting the reference
+in the file \lstinline|bibtex.bib|,
+and then you cite your reference like
+this\cite{wiki:C}\cite{Mecklenburg:2005a}\cite{Tschinkel:2007a}.
+
+\section*{Program Design}
+
+Audience: Write this section for someone
+who will maintain your program.
+In industry you maintain your own
+programs, and so your audience could be
+future you! List
+the main data structures and the main
+algorithms. You are answering the basic
+question, ``How is this thing organized
+so that I can have a chance of fixing
+it?''. This section will be longer for a
+more complicated program and shorter for
+a less complicated program.
+
+\subsection*{Pseudocode}
+Give the reader a top down description of your code! How will you break it down? What features will your code have? 
+How will you implement each function. 
+
+\subsection*{Function Descriptions}
+For each function in your program, you will need to explain your thought process. This means doing the following
+\begin{itemize}
+    \item The inputs of every function (even if it's not a parameter)
+    \item The outputs of every function (even if it's not the return value)
+    \item The purpose of each function, a brief description about a sentence long. 
+    \item For more complicated functions, include pseudocode that describes how the function works
+    \item For more complicated functions, also include a description of your decision making process; why you chose to use any data structures or control flows that you did.
+\end{itemize}
+Do not simply use your code to describe this. This section should be readable to a person with little to no code knowledge. 
+\textbf{DO NOT JUST PUT THE FUNCTION SIGNATURES HERE. MORE EXPLANATION IS REQUIRED.}
+
+\subsection*{Results}
+Follow the instructions on the pdf to do this. 
+In overleaf, you can drag an image straight into your source code to upload it. You can also look at \url{https://www.overleaf.com/learn/latex/Inserting_Images}
+% Any references in your report appear at
+% the end of the document automatically.
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+\end{document}
