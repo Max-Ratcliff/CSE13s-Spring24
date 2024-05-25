@@ -74,7 +74,7 @@ uint32_t stack_size(const Stack *s) {
 }
 
 void stack_copy(Stack *dst, const Stack *src) {
-    assert(dst->capacity == src->capacity);
+    assert(dst->capacity >= src->capacity);
     dst->items = src->items;
     dst->top = src->top;
 }
