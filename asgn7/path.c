@@ -61,8 +61,19 @@ void path_add(Path *p, uint32_t val, const Graph *g) {
     }
 }
 
-//uint32_t path_remove(Path *p, const Graph *g);
+uint32_t path_remove(Path *p, const Graph *g){
+	(void)p;
+	(void)g;
+	return (uint32_t)-1;
+}
 
-//void path_copy(Path *dst, const Path *src);
+void path_copy(Path *dst, const Path *src){
+	(void)dst;
+	(void)src;
+}
 
-//void path_print(const Path *p, FILE *f, const Graph *g);
+void path_print(const Path *p, FILE *f, const Graph *g){
+	(void)p;
+	(void)f;
+	(void)g;
+}
