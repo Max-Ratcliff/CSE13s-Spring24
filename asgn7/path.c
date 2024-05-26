@@ -32,9 +32,7 @@ void path_free(Path **pp) {
 
 uint32_t path_vertices(const Path *p) {
     assert(p != NULL);
-    uint32_t *top = NULL;
-    assert(stack_peek(p->vertices, top));
-    return (*top);
+    return (stack_size(p->vertices));
 }
 
 uint32_t path_distance(const Path *p) {
@@ -47,17 +45,17 @@ void path_add(Path *p, uint32_t val, const Graph *g) {
     if (stack_size(p->vertices) == 0) {
         //dont change distance
         //add vertex val to top of stack
-        stack_push((p->vertices), val);
+        assert(stack_push(p->vertices, val));
     } else {
         //a vertex is already on the stack eg at least two cities in path
         //add a new one and add the distance between the new one and the one on the top of the stack to total weight
-        uint32_t *prev = NULL;
-        assert(stack_peek((p->vertices), prev));
+        uint32_t prev;
+        assert(stack_peek((p->vertices), &prev));
         // prev should now point to one of the first city
         // add new vertex to the top of stack
         stack_push((p->vertices), val);
         //get distance betweenp prev and val
-        uint32_t weight = graph_get_weight(g, *prev, val);
+        uint32_t weight = graph_get_weight(g, prev, val);
         //update total_weight
         p->total_weight += weight;
     }
