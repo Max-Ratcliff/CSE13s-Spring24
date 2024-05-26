@@ -31,12 +31,14 @@ void path_free(Path **pp) {
 }
 
 uint32_t path_vertices(const Path *p) {
+    assert(p != NULL);
     uint32_t *top = NULL;
     assert(stack_peek(p->vertices, top));
     return (*top);
 }
 
 uint32_t path_distance(const Path *p) {
+    assert(p != NULL);
     return (p->total_weight);
 }
 
@@ -61,19 +63,19 @@ void path_add(Path *p, uint32_t val, const Graph *g) {
     }
 }
 
-uint32_t path_remove(Path *p, const Graph *g){
-	(void)p;
-	(void)g;
-	return (uint32_t)-1;
+uint32_t path_remove(Path *p, const Graph *g) {
+    (void) p;
+    (void) g;
+    return (uint32_t) -1;
 }
 
-void path_copy(Path *dst, const Path *src){
-	(void)dst;
-	(void)src;
+void path_copy(Path *dst, const Path *src) {
+    (void) dst;
+    (void) src;
 }
 
-void path_print(const Path *p, FILE *f, const Graph *g){
-	(void)p;
-	(void)f;
-	(void)g;
+void path_print(const Path *p, FILE *f, const Graph *g) {
+    (void) p;
+    (void) f;
+    (void) g;
 }
