@@ -62,18 +62,25 @@ void path_add(Path *p, uint32_t val, const Graph *g) {
 }
 
 uint32_t path_remove(Path *p, const Graph *g) {
-    (void) p;
-    (void) g;
-    return (uint32_t) -1;
+    uint32_t curr_vertex;
+    uint32_t prev_vertex;
+
+    if (stack_pop(p->vertices, &curr_vertex)) {
+        if (!stack_empty(p->vertices)) {
+            assert(stack_peek(p->vertices, &prev_vertex));
+            p->total_weight -= graph_get_weight(g, prev_vertex, curr_vertex);
+        } else {
+            p->total_weight = 0;
+        }
+    }
+    return curr_vertex;
 }
 
 void path_copy(Path *dst, const Path *src) {
-    (void) dst;
-    (void) src;
+    dst->total_weight = src->total_weight;
+    stack_copy(dst->vertices, src->vertices);
 }
 
 void path_print(const Path *p, FILE *f, const Graph *g) {
-    (void) p;
-    (void) f;
-    (void) g;
+    stack_print(p->vertices, f, graph_get_names(g));
 }
