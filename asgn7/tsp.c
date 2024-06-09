@@ -23,35 +23,30 @@
     "             graph and the command-line options it accepts, exiting the\n"                    \
     "             program afterwards.\n"
 
-void dfs(Graph *g, uint32_t start, Path *curr, Path *best) {
-    //printf("best len %u\n", path_distance(best));
-    graph_visit_vertex(g, start);
-    path_add(curr, start, g);
-    ///printf("path added\n");
-    //printf("new path length: %u\n", path_distance(curr));
+void dfs(Graph *g, uint32_t v, Path *curr, Path *best) {
+    //add the path to the top of the stack and mark the vertex as visited
+    path_add(curr, v, g);
+    graph_visit_vertex(g, v);
     if (path_vertices(curr) == graph_vertices(g)) { //check if we traverse every path
-        //printf("every path traversed\n");
-        //printf("weight between 'start' and 0 is: %u\n", graph_get_weight(g, start, START_VERTEX));
-        if (graph_get_weight(g, start, START_VERTEX) != 0) {
-            path_add(curr, START_VERTEX, g);
-            //printf("path added\n");
-            //printf("new path length: %u\n", path_distance(curr));
+        if (graph_get_weight(g, v, 0) != 0) { //if the path has a weight add it to curr
+            path_add(curr, 0, g);
 
-            if (path_distance(best) || path_distance(curr) > path_distance(best)) {
+            if (path_distance(best) == 0
+                || path_distance(curr) < path_distance(
+                       best)) { // if the distance of curr is smaller than the distance of best or best hasnt been initialized copy curr into best
                 path_copy(best, curr);
-                //printf("path coppied\n");
             }
-            path_remove(curr, g);
+            path_remove(curr, g); //then pop the path we just added
         }
     }
-    for (uint32_t node = 0; node < graph_vertices(g); node++) {
-        if (graph_get_weight(g, start, node) > 0) {
+    for (uint32_t node = 0; node < graph_vertices(g); node++) { //dfs alg... search down every path
+        if (graph_get_weight(g, v, node) > 0) {
             if (!graph_visited(g, node)) {
                 dfs(g, node, curr, best);
             }
         }
     }
-    graph_unvisit_vertex(g, start);
+    graph_unvisit_vertex(g, v);
     path_remove(curr, g);
 }
 
@@ -124,8 +119,8 @@ int main(int argc, char *argv[]) {
     }
 
     //initialize paths
-    Path *curr = path_create(vertices);
-    Path *best = path_create(vertices);
+    Path *curr = path_create(vertices + 1);
+    Path *best = path_create(vertices + 1);
     dfs(g, START_VERTEX, curr, best);
     //best should now contain the best path
 
