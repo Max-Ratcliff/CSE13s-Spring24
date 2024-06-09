@@ -115,9 +115,14 @@ int main(int argc, char *argv[]) {
     Path *best = path_create(vertices);
     dfs(g, START_VERTEX, curr, best);
     //best should now contain the best path
-    //print path
-    printf("Alissa starts at:\n");
-    path_print(best, outfile, g);
+
+    if (path_distance(best) == 0) {
+        printf("No path found! Alissa is lost!\n");
+    } else {
+        //print path
+        printf("Alissa starts at:\n");
+        path_print(best, outfile, g);
+    }
 
     free(name);
     path_free(&curr);
