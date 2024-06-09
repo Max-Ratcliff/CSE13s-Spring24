@@ -7,6 +7,7 @@
 #include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #define OPTIONS "i:o:dh"
@@ -23,13 +24,22 @@
     "             program afterwards.\n"
 
 void dfs(Graph *g, uint32_t start, Path *curr, Path *best) {
+    //printf("best len %u\n", path_distance(best));
     graph_visit_vertex(g, start);
     path_add(curr, start, g);
+    ///printf("path added\n");
+    //printf("new path length: %u\n", path_distance(curr));
     if (path_vertices(curr) == graph_vertices(g)) { //check if we traverse every path
+        //printf("every path traversed\n");
+        //printf("weight between 'start' and 0 is: %u\n", graph_get_weight(g, start, START_VERTEX));
         if (graph_get_weight(g, start, START_VERTEX) != 0) {
             path_add(curr, START_VERTEX, g);
-            if (path_distance(best) || path_distance(curr) < path_distance(best)) {
+            //printf("path added\n");
+            //printf("new path length: %u\n", path_distance(curr));
+
+            if (path_distance(best) || path_distance(curr) > path_distance(best)) {
                 path_copy(best, curr);
+                //printf("path coppied\n");
             }
             path_remove(curr, g);
         }
@@ -82,6 +92,7 @@ int main(int argc, char *argv[]) {
         fclose(infile);
         exit(1);
     }
+    //capture newline
     char cap[10];
     fgets(cap, 10, infile);
     Graph *g = graph_create(vertices, directed);
@@ -92,6 +103,8 @@ int main(int argc, char *argv[]) {
             fclose(infile);
             exit(1);
         }
+        //capture newline
+        name[strcspn(name, "\n")] = '\0';
         graph_add_vertex(g, name, i);
     }
     uint32_t edges;
@@ -102,7 +115,7 @@ int main(int argc, char *argv[]) {
     }
     for (uint32_t i = 0; i < edges; i++) {
         uint32_t start, end, weight;
-        if (fscanf(infile, "%u %u %u\n", &start, &end, &weight) != 3) {
+        if (fscanf(infile, "%u %u %u", &start, &end, &weight) != 3) {
             fprintf(stderr, "tsp: error reading edge %u\n", i);
             fclose(infile);
             exit(1);
