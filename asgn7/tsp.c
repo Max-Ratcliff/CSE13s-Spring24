@@ -71,10 +71,7 @@ int main(int argc, char *argv[]) {
             }
             break;
         case 'd': directed = true; break;
-        case 'h':
-            fprintf(stderr, USAGE);
-            exit(0);
-            break;
+        case 'h': fprintf(stdout, USAGE); break;
         }
     }
 
@@ -119,6 +116,7 @@ int main(int argc, char *argv[]) {
     dfs(g, START_VERTEX, curr, best);
     //best should now contain the best path
     //print path
+    printf("Alissa starts at:\n");
     path_print(best, outfile, g);
 
     free(name);
