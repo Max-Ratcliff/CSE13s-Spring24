@@ -83,5 +83,5 @@ void path_copy(Path *dst, const Path *src) {
 
 void path_print(const Path *p, FILE *f, const Graph *g) {
     stack_print(p->vertices, f, graph_get_names(g));
-    printf("Total Distance: %u\n", p->total_weight);
+    fprintf(f, "Total Distance: %u\n", p->total_weight);
 }

@@ -125,10 +125,10 @@ int main(int argc, char *argv[]) {
     //best should now contain the best path
 
     if (path_distance(best) == 0) {
-        printf("No path found! Alissa is lost!\n");
+        fprintf(outfile, "No path found! Alissa is lost!\n");
     } else {
         //print path
-        printf("Alissa starts at:\n");
+        fprintf(outfile, "Alissa starts at:\n");
         path_print(best, outfile, g);
     }
 
