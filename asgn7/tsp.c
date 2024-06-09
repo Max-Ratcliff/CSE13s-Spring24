@@ -71,34 +71,43 @@ int main(int argc, char *argv[]) {
             }
             break;
         case 'd': directed = true; break;
-        case 'h': fprintf(stderr, USAGE); break;
+        case 'h':
+            fprintf(stderr, USAGE);
+            exit(0);
+            break;
         }
     }
 
     //start building graph
     uint32_t vertices;
-    if (fscanf(infile, "%u\n", &vertices) != 1) {
+    if (fscanf(infile, "%u", &vertices) != 1) {
         fprintf(stderr, "tsp: error reading number of vertices\n");
+        fclose(infile);
         exit(1);
     }
+    char cap[10];
+    fgets(cap, 10, infile);
     Graph *g = graph_create(vertices, directed);
-    char *name = NULL;
+    char *name = (char *) malloc(1024);
     for (uint32_t i = 0; i < vertices; i++) {
-        if (fscanf(infile, "%s\n", name) != 1) {
-            fprintf(stderr, "tsp: error reading vertex %u's name\n", i);
+        if (!fgets(name, 1024, infile)) {
+            fprintf(stderr, "tsp: error reading vertex %u's name read %s\n", i, name);
+            fclose(infile);
             exit(1);
         }
         graph_add_vertex(g, name, i);
     }
     uint32_t edges;
-    if (fscanf(infile, "%u\n", &edges) != 1) {
-        fprintf(stderr, "tsp: error reading number of edges\n");
+    if (fscanf(infile, "%u", &edges) != 1) {
+        fprintf(stderr, "tsp: error reading number of edges, read: %u\n", edges);
+        fclose(infile);
         exit(1);
     }
     for (uint32_t i = 0; i < edges; i++) {
         uint32_t start, end, weight;
-        if (fscanf(infile, "%u %u %u\n", &start, &end, &weight) != 1) {
-            fprintf(stderr, "tsp: error reading number of edges\n");
+        if (fscanf(infile, "%u %u %u\n", &start, &end, &weight) != 3) {
+            fprintf(stderr, "tsp: error reading edge %u\n", i);
+            fclose(infile);
             exit(1);
         }
         graph_add_edge(g, start, end, weight);
@@ -112,13 +121,16 @@ int main(int argc, char *argv[]) {
     //print path
     path_print(best, outfile, g);
 
+    free(name);
     path_free(&curr);
     path_free(&best);
     graph_free(&g);
-    if (infile != stdin)
+    if (infile != stdin) {
         fclose(infile);
-    if (outfile != stdout)
+    }
+    if (outfile != stdout) {
         fclose(outfile);
+    }
 
     return 0;
 }
