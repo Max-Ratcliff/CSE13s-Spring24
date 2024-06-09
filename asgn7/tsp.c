@@ -1,36 +1,124 @@
 #include "graph.h"
 #include "path.h"
 #include "stack.h"
+#include "vertices.h"
 
 #include <assert.h>
 #include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-int main(void) {
-    uint32_t cap = 10;
-    Path *p = path_create(cap);
+#define OPTIONS "i:o:dh"
+#define USAGE                                                                                      \
+    "Usage: tsp [options]\n\n"                                                                     \
+    "-i infile    Specify the input file path containing the cities and edges\n"                   \
+    "             of a graph. If not specified, the default input should be\n"                     \
+    "             set as stdin.\n\n"                                                               \
+    "-o outfile   Specify the output file path to print to. If not specified,\n"                   \
+    "             the default output should be set as stdout.\n\n"                                 \
+    "-d           Specifies the graph to be directed.\n\n"                                         \
+    "-h           Prints out a help message describing the purpose of the\n"                       \
+    "             graph and the command-line options it accepts, exiting the\n"                    \
+    "             program afterwards.\n"
 
-    Graph *g = graph_create(3, false);
-    graph_add_vertex(g, "testv1", 0);
-    graph_add_vertex(g, "testv2", 1);
-    graph_add_vertex(g, "testv3", 2);
+void dfs(Graph *g, uint32_t start, Path *curr, Path *best) {
+    graph_visit_vertex(g, start);
+    path_add(curr, start, g);
+    if (path_vertices(curr) == graph_vertices(g)) { //check if we traverse every path
+        if (graph_get_weight(g, start, START_VERTEX) != 0) {
+            path_add(curr, START_VERTEX, g);
+            if (path_distance(best) || path_distance(curr) < path_distance(best)) {
+                path_copy(best, curr);
+            }
+            path_remove(curr, g);
+        }
+    }
+    for (uint32_t node = 0; node < graph_vertices(g); node++) {
+        if (graph_get_weight(g, start, node) > 0) {
+            if (!graph_visited(g, node)) {
+                dfs(g, node, curr, best);
+            }
+        }
+    }
+    graph_unvisit_vertex(g, start);
+    path_remove(curr, g);
+}
 
-    graph_print(g);
+int main(int argc, char *argv[]) {
+    int opt;
 
-    path_add(p, 0, g);
+    bool directed = false;
 
-    assert(path_distance(p) == 0);
-    printf("%u\n", path_distance(p));
+    FILE *outfile = stdout;
 
-    //Stack *s = stack_create(cap);
+    FILE *infile = stdin;
 
-    //assert(path_vertices(p) == 0);
-    printf("%u\n", path_vertices(p));
+    while ((opt = getopt(argc, argv, OPTIONS)) != -1) {
+        switch (opt) {
+        case 'i':
+            infile = fopen(optarg, "r");
+            if (infile == NULL) {
+                infile = stdin;
+                fprintf(stderr, USAGE);
+            }
+            break;
+        case 'o':
+            outfile = fopen(optarg, "w");
+            if (outfile == NULL) {
+                outfile = stdout;
+                fprintf(stderr, USAGE);
+            }
+            break;
+        case 'd': directed = true; break;
+        case 'h': fprintf(stderr, USAGE); break;
+        }
+    }
 
-    path_add(p, 1, g);
+    //start building graph
+    uint32_t vertices;
+    if (fscanf(infile, "%u\n", &vertices) != 1) {
+        fprintf(stderr, "tsp: error reading number of vertices\n");
+        exit(1);
+    }
+    Graph *g = graph_create(vertices, directed);
+    char *name = NULL;
+    for (uint32_t i = 0; i < vertices; i++) {
+        if (fscanf(infile, "%s\n", name) != 1) {
+            fprintf(stderr, "tsp: error reading vertex %u's name\n", i);
+            exit(1);
+        }
+        graph_add_vertex(g, name, i);
+    }
+    uint32_t edges;
+    if (fscanf(infile, "%u\n", &edges) != 1) {
+        fprintf(stderr, "tsp: error reading number of edges\n");
+        exit(1);
+    }
+    for (uint32_t i = 0; i < edges; i++) {
+        uint32_t start, end, weight;
+        if (fscanf(infile, "%u %u %u\n", &start, &end, &weight) != 1) {
+            fprintf(stderr, "tsp: error reading number of edges\n");
+            exit(1);
+        }
+        graph_add_edge(g, start, end, weight);
+    }
 
-    printf("%u\n", path_distance(p));
-    printf("%u\n", path_vertices(p));
+    //initialize paths
+    Path *curr = path_create(vertices);
+    Path *best = path_create(vertices);
+    dfs(g, START_VERTEX, curr, best);
+    //best should now contain the best path
+    //print path
+    path_print(best, outfile, g);
+
+    path_free(&curr);
+    path_free(&best);
+    graph_free(&g);
+    if (infile != stdin)
+        fclose(infile);
+    if (outfile != stdout)
+        fclose(outfile);
+
     return 0;
 }
