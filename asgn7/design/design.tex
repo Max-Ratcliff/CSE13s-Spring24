@@ -80,7 +80,7 @@ Do not just copy the assignment PDF to complete this section, use your own words
 
 \section*{How to Use the Program}
 
-\textbf{to use this program, first compile with make, and then run with \lstinline{.\\tsp} with the optional arguments \lstinline{'-i' to get input from a file other than stdio, '-o' to write to a file other than stdout, '-d' to treat graphs as directed instead of undirected, '-h' to print the help message to sdtio} the program will then print the shortest to either stdout or the file specified in the arguments}
+\textbf{to use this program, first compile with make, and then run with \lstinline{.\\tsp} with the optional arguments \lstinline{'-i' to get input from a file other than stdio, '-o' to write to a file other than stdout, '-d' to treat graphs as directed instead of undirected, '-h' to print the help message to sdtio} the program will then print the shortest path to either stdout or the file specified in the arguments}
 
 \section*{Program Design}
 
@@ -158,6 +158,121 @@ For each function in your program, you will need to explain your thought process
     \item Inputs: pointer to a graph and the index to the vertex that were checking if its been visited
     \item Output: true/false value
     \item returnes true if vertex v is visited and false otherwise 
+\end{itemize}
+\subsubsection{stack\_create}
+\begin{itemize}
+    \item Inputs: 32 bit int for capacity
+    \item Output: an an initialized stack ADT
+    \item initializes memory for the stack and sets its custom data fields for capacity, top, and items 
+\end{itemize}
+\subsubsection{stack\_free}
+\begin{itemize}
+    \item Inputs: double ptr to a stack data type
+    \item Output: all memory freed and ptr set to null
+    \item frees all the allocated memory of the stack and sets the original pointer to null
+    \item free the memory allocated to items array 
+\end{itemize}
+\subsubsection{stack\_push}
+\begin{itemize}
+    \item Inputs: pointer to a graph, and value to push to the top 
+    \item Output: updated stack  
+    \item adds the value to the satck at the index of top, then increment top 
+\end{itemize}
+\subsubsection{stack\_pop}
+\begin{itemize}
+    \item Inputs: pointer to a stack and pointer to the value to receive 
+    \item Output: success state and pointer updated to the value popped
+    \item updates the pointer to the value at the top of the stack, then decrement top.
+\end{itemize}
+\subsubsection{stack\_peek}
+\begin{itemize}
+    \item Inputs: pointer to a stack and pointer to the value to receive 
+    \item Output: success state and pointer updated to the value popped
+    \item updates the pointer to the value at the top of the stack. 
+\end{itemize}
+\subsubsection{stack\_empty}
+\begin{itemize}
+    \item Inputs: pointer to a graph 
+    \item Output: true/false
+    \item returns true if the stack is empty false otherwise
+\end{itemize}
+\subsubsection{stack\_full}
+    \item Inputs: pointer to a graph 
+    \item Output: true/false
+    \item returns true if the stack is full false otherwise
+\begin{itemize}
+\end{itemize}
+\subsubsection{stack\_size}
+\begin{itemize}
+    \item Inputs: pointer to a graph
+    \item Output: int representing the size of the stack
+    \item returns the size of the stack
+\end{itemize}
+\subsubsection{stack\_copy}
+\begin{itemize}
+    \item Inputs: pointer to a destination stack, pointer to a source stack
+    \item Output: updated destinantion stack, unmodified source stack
+    \item iteravvly copies items from one stack to the next 
+\end{itemize}
+\subsubsection{stack\_print}
+\begin{itemize}
+    \item Inputs: pointer to a stack, pointer to a file, pointera an array of strings
+    \item Output: output file filled 
+    \item iterates through the array and print them to the outfile 
+\end{itemize}
+\subsubsection{path\_create}
+\begin{itemize}
+    \item Inputs: 32 bit int for capacity
+    \item Output: an initialized path ADT
+    \item initializes memory for the path and calls stack\_creates initializes distance to 0
+\end{itemize}
+\subsubsection{path\_free}
+\begin{itemize}
+    \item Inputs: double ptr to a path data type
+    \item Output: all memory freed and ptr set to null
+    \item frees all the allocated memory of the path and then call stack\_free sets the original pointer to null
+\end{itemize}
+\subsubsection{path\_vertices}
+\begin{itemize}
+    \item Inputs: pointer to a path 
+    \item Output: returns the number of vertices
+    \item accesses the stack and calls the stack\_size funtions
+\end{itemize}
+\subsubsection{path\_distance}
+\begin{itemize}
+    \item Inputs: pointer to a path 
+    \item Output: int representing the total distance of the path
+    \item returns the value stored in total\_distance 
+\end{itemize}
+\subsubsection{path\_add}
+\begin{itemize}
+    \item Inputs: pointer to a path, pointer to a graph, vertex 
+    \item Output: updated path 
+    \item adds reads vertex v from the graph and push it to the stack, then update total distance 
+\end{itemize}
+\subsubsection{path\_remove}
+\begin{itemize}
+    \item Inputs: pointer to a path, pointer to a graph 
+    \item Output: updated path
+    \item pops the first value from the stack and updates the total distance 
+\end{itemize}
+\subsubsection{path\_copy}
+\begin{itemize}
+    \item Inputs: pointer to a destination path, pointer to a source path
+    \item Output: updated destinantion path, unmodified source path
+    \item iteravly copies items from one path to the next 
+\end{itemize}
+\subsubsection{stack\_print}
+\begin{itemize}
+    \item Inputs: pointer to a path pointer to a file, pointer to a graph
+    \item Output: output file filled 
+    \item prints path to the outfile and then call stack\_print
+\end{itemize}
+\subsubsection{tsp}
+\begin{itemize}
+    \item Inputs: pointer to a graph, int for a vertex, pointer to a current path, pointer to a best path
+    \item Output: updated best path 
+    \item implements a DFS algorithm exploring every path, and then after each path is fully explored check if its shorter then the best path found so far and update the shortest path. 
 \end{itemize}
 % Any references in your report appear at
 % the end of the document automatically.
